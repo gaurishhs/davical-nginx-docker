@@ -16,9 +16,9 @@ ENV DAVICAL_VERSION=1.1.8 \
     DAVICAL_APP_DB_USER='davical_app' \
     DAVICAL_APP_DB_PASS='' \
     DAVICAL_ENABLE_AUTO_SCHEDULE='true'
-
-RUN curl -o /usr/share/davical.tar.gz https://gitlab.com/davical-project/davical/repository/archive.tar.gz?ref=r${DAVICAL_VERSION} \
-    && curl -o /usr/share/awl.tar.gz https://gitlab.com/davical-project/awl/repository/archive.tar.gz?ref=r${AWL_VERSION} \
+https://gitlab.com/davical-project/davical/-/archive/${DAVICAL_VERSION}/davical.tar.gz
+RUN curl -o /usr/share/davical.tar.gz https://gitlab.com/davical-project/davical/-/archive/r${DAVICAL_VERSION}/davical.tar.gz \
+    && curl -o /usr/share/awl.tar.gz https://gitlab.com/davical-project/awl/-/archive/r${AWL_VERSION}/awl.tar.gz \
     && cd /usr/share && tar -xzvf davical.tar.gz && tar -xzvf awl.tar.gz && rm *.tar.gz && mv awl-* awl && mv davical-* davical
 
 ADD config.php /etc/davical/
